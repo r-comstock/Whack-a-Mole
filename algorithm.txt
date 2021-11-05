@@ -1,0 +1,9 @@
+How the game is played:
+    Click START
+    Click the play button
+    Screen comes up with the point value for different moles
+    Click the play button
+    Whack the moles
+    Dont Whack the bomb
+    Click replay
+

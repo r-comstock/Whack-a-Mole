@@ -16,7 +16,7 @@ playbutton = cv2.imread('Assets/playbutton.png', 0)
 tenpointmole = cv2.imread('Assets/tenpointmole.png', 0)
 thirtypointmole = cv2.imread('Assets/thirtypointmole.png', 0)
 twentypointmole = cv2.imread('Assets/twentypointmole.png', 0)
-asset_images =[fortypointmole, tenpointmole, thirtypointmole, twentypointmole, playbutton, replay]
+asset_images =[fortypointmole, tenpointmole, thirtypointmole, twentypointmole]
 
 #Area of the game screen that we want to capture
 dimensions = {'top': 345, 'left': 279, 'width': 913, 'height': 597}

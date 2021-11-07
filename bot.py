@@ -16,11 +16,10 @@ playbutton = cv2.imread('Assets/playbutton.png', 0)
 tenpointmole = cv2.imread('Assets/tenpointmole.png', 0)
 thirtypointmole = cv2.imread('Assets/thirtypointmole.png', 0)
 twentypointmole = cv2.imread('Assets/twentypointmole.png', 0)
-asset_images =[fortypointmole, tenpointmole, thirtypointmole, twentypointmole]
-
+asset_images =[fortypointmole, tenpointmole, thirtypointmole, twentypointmole, playbutton, replay]
 
 #Area of the game screen that we want to capture
-dimensions = {'top': 450, 'left': 550, 'width': 465, 'height': 420}
+dimensions = {'top': 345, 'left': 279, 'width': 913, 'height': 597}
 
 before = np.array(mss.mss().grab(dimensions))
 cv2.imshow('before', before)
@@ -40,78 +39,9 @@ while True:
     for image in asset_images:
         result = cv2.matchTemplate(img, image, cv2.TM_CCOEFF_NORMED)
         _, max_val, _, max_loc = cv2.minMaxLoc(result)
-        if max_val > 0.9:
+        print(max_val)
+        if max_val > 0.6:
             pyautogui.click(max_loc[0] + dimensions['left'], max_loc[1] + dimensions['top'])
-            #time.sleep(0.5)
         
     if keyboard.is_pressed('q'):
         break
-"""
-fps_time = time()
-
-with mss.mss() as sct:
-    # Get information of monitor 2
-    monitor_number = 0
-    mon = sct.monitors[monitor_number]
-
-    # Part of the screen to capture
-    monitor = {
-        "top": mon["top"] + 450,  # 100px from the top
-        "left": mon["left"] + 550,  # 100px from the left
-        "width": 465,
-        "height": 420,
-        "mon": monitor_number,
-    }
-
-
-while True:
-    img = sct.grab(monitor)
-    img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2GRAY)
-    
-    result = cv2.matchTemplate(img, replay, cv2.TM_CCOEFF_NORMED)
-    _, max_val, _, max_loc = cv2.minMaxLoc(result)
-    if max_val > 0.9:
-        print("Replay button found.")
-        #pyautogui.click(max_loc[0] + dimensions['left'], max_loc[1] + dimensions['top'])
-        
-    
-    sleep(0.10)
-    if keyboard.is_pressed('q'):
-        break """
-
-""" bomb = cv2.imread('Assets/bomb.png', 0)
-replay = cv2.imread('Assets/replay.png', 0)
-
-h, w = replay.shape
-
-with mss.mss() as sct:
-    # Get information of monitor 2
-    monitor_number = 1
-    mon = sct.monitors[monitor_number]
-
-    # Part of the screen to capture
-    monitor = {
-        "top": mon["top"] + 450,  # 100px from the top
-        "left": mon["left"] + 550,  # 100px from the left
-        "width": 465,
-        "height": 420,
-        "mon": monitor_number,
-    }
-
-    
-img = sct.grab(monitor)
-img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2GRAY)
-
-
-
-result = cv2.matchTemplate(img, replay, cv2.TM_CCOEFF_NORMED)
-min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-location = max_loc
-pyautogui.click((location[0] + w/2, location[1] + h/2))
-
-cv2.rectangle(img, location, (location[0] + w, location[1] + h), (0, 0, 255), 2)
-# Display the picture
-cv2.imshow("OpenCV/Numpy normal", img)
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()   """   
